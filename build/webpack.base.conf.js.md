@@ -1,12 +1,29 @@
 
-#####path.join方法
+#### 这个配置怎么搞，vueLoaderConfig用的是utils.cssLoaders，奇怪这里对应的options！？
+```
+{
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: vueLoaderConfig
+      }
+```
+
+
+#### output.filename中的\[name\]、\[id\]、\[hash\]、\[chunkhash\]
+\[name\]：使用入口名称
+\[id\]：使用内部 chunk id
+\[hash\]：使用每次构建过程中，唯一的 hash 生成
+\[chunkhash\]：使用基于每个 chunk 内容的 hash
+
+
+##### path.join方法
 ```
 return path.join(__dirname, '..', dir)
 ```
 join的参数可大于两个，2 3 4都可以，'..'表示上级目录
 
 
-#####配置eslint-loader 及enforce选项
+##### 配置eslint-loader 及enforce选项
 ```
 rules: [
       {
@@ -22,7 +39,7 @@ rules: [
 eslint是规范js语法，所以他需要处理的是js文件，而且应该是先于所有loader去处理js文件，如果出错或者不规范则纠正之，这里可以利用webpack的 enforce 属性，设置eslint检查，先于其他loader，include表示要检查src、test目录下的代码，options中的formatter引用了eslint-friendly-formatter，表示让eslint的错误信息出现在终端上。
 
 
-#####eslint依赖包
+##### eslint依赖包
 ```
 "babel-eslint": "^7.1.1",               //eslint解析器，使其能支持es6等语法检测
 "eslint": "^3.19.0",
@@ -34,7 +51,7 @@ eslint是规范js语法，所以他需要处理的是js文件，而且应该是�
 "eslint-plugin-standard": "^2.0.1",     //
 ```
 
-#####url-loader的options.name
+##### url-loader的options.name
 
 ```
 name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
