@@ -1,4 +1,21 @@
 
+#### app.use(path, express.static(...))
+
+**express.static('...')：**传递一个包含静态资源的目录给 express.static 中间件用于立刻开始提供文件，express.static 函数的路径是一个相对node进程启动位置的相对路径，也可以是绝对路径。
+`app.use(express.static('./real'))`，有了这句就可以在浏览器访问静态资源了，如
+http://localhost:8002/real/hello.png (这里的static是物理目录)，想用虚拟目录访问也可以，像这样 `app.use('/static', express.static('./real'))`，http://localhost:8002/static/hello.png实际上就是访问了http://localhost:8002/real/hello.png
+```
+var express = require('express')
+var app = express()
+
+// serve pure static assets
+var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
+app.use(staticPath, express.static('./static'))
+```
+参考：[app.use(express.static)详解](https://blog.csdn.net/u010977147/article/details/60956502)
+#####【上面的app和express有不同吗？】
+
+
 ##### express的中间件：
 - webpack-dev-middleware
 - webpack-hot-middleware
@@ -86,7 +103,7 @@ compiler.plugin('compilation', function (compilation) {
 })
 ```
 
-##### 奇怪的Promise用法
+#### 奇怪的Promise用法
 [【大白话讲解Promise（一）】](https://www.cnblogs.com/lvdabao/p/es6-promise-1.html)中的Promise我是看得懂，这里的用法我看不懂，也没关系，不用Promise也是可以的，大概的意思就是devMiddleware启动服务，完成后在回调中打开页面
 ```
 var _resolve
