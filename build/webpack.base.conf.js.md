@@ -16,6 +16,19 @@
 \[chunkhash\]：使用基于每个 chunk 内容的 hash
 
 
+##### resolve.extensions
+```
+resolve: {
+  // // 当你reuire时，不需要加上以下扩展名
+  extensions: ['.js', '.vue', '.json'],
+  alias: {
+    'vue$': 'vue/dist/vue.esm.js',
+    '@': resolve('src')
+  }
+}
+```
+
+
 ##### path.join方法
 ```
 return path.join(__dirname, '..', dir)
