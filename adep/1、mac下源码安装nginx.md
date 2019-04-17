@@ -20,7 +20,7 @@ sudo make install
 
 更多用./configure配置安装信息见：http://nginx.org/en/docs/configure.html 
 
-安装好后路径就在 /usr/local/nginx，可招待文件nginx和配置文件nginx.conf就在就该目录，不改配置的话就用80端口
+安装好后路径就在 /usr/local/nginx，可执行文件nginx和配置文件nginx.conf就在就该目录，不改配置的话就用80端口
 
 sudo ./nginx            #启动 http://localhost即可访问
 sudo ./nginx -s stop    #停止
